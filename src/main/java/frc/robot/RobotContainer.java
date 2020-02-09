@@ -12,15 +12,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Spark;
 import frc.robot.Constants;
 import frc.robot.Xbox360Controller;
-import frc.robot.commands.AutoVisionCommand;
-import frc.robot.commands.CameraDriverCommand;
-import frc.robot.commands.DriveCommand;
-import frc.robot.subsystems.AutoVisionSubsystem;
-import frc.robot.subsystems.CameraDriverSubsystem;
-import frc.robot.subsystems.DriveSubsystem;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.networktables.NetworkTable;
-
+import frc.robot.subsystems.*;
+import frc.robot.commands.*;
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -29,16 +22,22 @@ import edu.wpi.first.networktables.NetworkTable;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public static DriveSubsystem driveSubsystem = new DriveSubsystem();
-  public static AutoVisionSubsystem autoVisionSubsystem = new AutoVisionSubsystem();
-  public static CameraDriverSubsystem cameraDriverSubsystem = new CameraDriverSubsystem();
+  public static GyroCommand gyroCommand = new GyroCommand();
+  public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
 
   public static CameraDriverCommand cameraDriverCommand = new CameraDriverCommand();
+  public static CameraDriverSubsystem cameraDriverSubsystem = new CameraDriverSubsystem();
+
   public static AutoVisionCommand autoVisionCommand = new AutoVisionCommand();
+  public static AutoVisionSubsystem autoVisionSubsystem = new AutoVisionSubsystem();
+
   public static DriveCommand driveCommand = new DriveCommand();
+  public static DriveSubsystem driveSubsystem = new DriveSubsystem();
+
   public static Xbox360Controller driverControl = new Xbox360Controller(Constants.NUM_DRIVER_CONTROLLER);
   public static DifferentialDrive chasis = new DifferentialDrive(new Spark(Constants.CHASIS_LEFT), new Spark(Constants.CHASIS_RIGHT));
   
+
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
@@ -55,6 +54,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
   }
+
 
 
   /**

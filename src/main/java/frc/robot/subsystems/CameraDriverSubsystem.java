@@ -14,9 +14,11 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 public class CameraDriverSubsystem extends SubsystemBase {
   NetworkTableEntry isDriverMode;
+  NetworkTableEntry isValid;
   NetworkTable table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("Microsoft LifeCam HD-3000");
   public CameraDriverSubsystem() {
-    isDriverMode = table.getEntry("driver_mode");
+    isDriverMode = table.getEntry("driverMode");
+    isValid = table.getEntry("isValid");
   }
   @Override
   public void periodic() {
@@ -24,10 +26,7 @@ public class CameraDriverSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
   public void Run(boolean action){
-    if(action){
-     // Sets driver mode to true if the A button is pressed
       isDriverMode.setBoolean(action);
-    }
-    
+      isValid.setBoolean(!action);
   }
 }

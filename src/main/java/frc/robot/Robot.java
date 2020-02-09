@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.RobotContainer;
 import frc.robot.Test;
+import frc.robot.AutonomousSequence;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -21,15 +22,10 @@ import frc.robot.Test;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  private RobotContainer robotContainer;
+  private AutonomousSequence autonomousSequence = new AutonomousSequence();
   private Test test = new Test();
-  /**
-   * This function is run when the robot is first started up and should be used for any
-   * initialization code.
-   */ 
   @Override
   public void robotInit() {
-    robotContainer = new RobotContainer();
 
   }
 
@@ -50,27 +46,17 @@ public class Robot extends TimedRobot {
     
   }
 
-  /**
-   * This function is called once each time the robot enters Disabled mode.
-   */
-  @Override
-  public void disabledInit() {
-  }
-
-  @Override
-  public void disabledPeriodic() {
-  }
-
+  
   /**
    * This autonomous runs the autonomous command selected by your {@link RobotContainer} class.
    */
   @Override
   public void autonomousInit() {
-
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
+    autonomousSequence.schedule();
   }
 
   /**
@@ -78,6 +64,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+
   }
 
   @Override
@@ -96,7 +83,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-
     test.Run();
     
   }

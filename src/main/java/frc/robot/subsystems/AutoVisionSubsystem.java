@@ -25,11 +25,11 @@ public class AutoVisionSubsystem extends SubsystemBase {
   // distance in inches the robot wants to stay from an object
   private static final double kHoldDistance = 0;
   // proportional speed constant
-  private static final double kP = .017;
+  private static final double kP = .027;  //.027
   // integral speed constant
-  private static final double kI = .01;
+  private static final double kI = .01; //.01
   // derivative speed constant
-  private static final double kD = .002;
+  private static final double kD = .005; //.005
   private final MedianFilter m_filter = new MedianFilter(5);
   private final PIDController m_pidController = new PIDController(kP, kI, kD);
   private  NetworkTable table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("Microsoft LifeCam HD-3000");

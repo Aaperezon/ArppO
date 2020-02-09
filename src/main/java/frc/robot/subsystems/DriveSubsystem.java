@@ -9,22 +9,46 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import java.util.Map;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import frc.robot.RobotContainer;
 /**
  * Add your docs here.
  */
 public class DriveSubsystem extends SubsystemBase {
-  private double speed = 1;
-  private double speedV = .5;
-  private double speedG = .8;
-  private String direction;	
+	//private double speed = 1;
+	//private double speedV = .5;
+	//private double speedG = .8;
+	private String direction;	
+	private ShuffleboardTab tab = Shuffleboard.getTab("Drive");
+	private NetworkTableEntry maxSpeed =
+		tab.add("Max Speed", 1)
+		.withWidget(BuiltInWidgets.kNumberSlider) // specify the widget here
+		.getEntry();
+	private double speed = maxSpeed.getDouble(1.0);
+	private NetworkTableEntry maxSpeedV =
+		tab.add("Max SpeedV", 1)
+		.withWidget(BuiltInWidgets.kNumberSlider) // specify the widget here
+		.getEntry();
+	private double speedV = maxSpeedV.getDouble(1.0);
+	
+	private NetworkTableEntry maxSpeedG =
+		tab.add("Max SpeedG", 1)
+		.withWidget(BuiltInWidgets.kNumberSlider) // specify the widget here
+		.getEntry();
+	private double speedG = maxSpeedG.getDouble(1.0);
   public DriveSubsystem() {
-
   }
 
   @Override
   public void periodic() {
-	  setDefaultCommand(RobotContainer.driveCommand);
+	setDefaultCommand(RobotContainer.driveCommand);
+	speed = maxSpeed.getDouble(1.0);
+	speedV = maxSpeedV.getDouble(1.0);
+	speedG = maxSpeedG.getDouble(1.0);
 	// This method will be called once per scheduler run
   }
 
