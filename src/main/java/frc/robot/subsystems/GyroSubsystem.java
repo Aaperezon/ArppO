@@ -33,7 +33,6 @@ public class GyroSubsystem extends SubsystemBase {
   public GyroSubsystem() {
     gyro.reset();
     m_pidController.setSetpoint(kHoldPosition);
-
   }
 
   @Override

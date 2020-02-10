@@ -10,26 +10,35 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class GyroCommand extends CommandBase {
+public class DeleteCommand extends CommandBase {
   /**
-   * Creates a new GyroCommand.
+   * Creates a new DeleteCommand.
    */
-  public GyroCommand() {
+  int numero = 0;
+  boolean termina;
+  public DeleteCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.gyroSubsystem);
+    addRequirements(RobotContainer.deleteSubsytem);
+  }
+  public DeleteCommand(int num){
+    numero = num;
+    addRequirements(RobotContainer.deleteSubsytem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    termina = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean action = RobotContainer.driverControl.GetX();
-    //RobotContainer.gyroSubsystem.See(action);
-    //RobotContainer.gyroSubsystem.Go();
+    if (RobotContainer.deleteSubsytem.Go()){
+      termina=true;
+    }
+    System.out.println("PruebaComando"+numero);
+
   }
 
   // Called once the command ends or is interrupted.
@@ -40,6 +49,6 @@ public class GyroCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return termina;
   }
 }

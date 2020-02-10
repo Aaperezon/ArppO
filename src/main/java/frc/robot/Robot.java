@@ -22,7 +22,6 @@ import frc.robot.AutonomousSequence;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  private AutonomousSequence autonomousSequence = new AutonomousSequence();
   private Test test = new Test();
   @Override
   public void robotInit() {
@@ -56,7 +55,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
-    autonomousSequence.schedule();
+    
+    RobotContainer.autonomousSequence.schedule();
   }
 
   /**
@@ -83,7 +83,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    test.Run();
+    //test.Run();
     
   }
 
