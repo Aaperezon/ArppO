@@ -1,0 +1,101 @@
+===CHASIS===
+*Controlado por control 1.
+*Sensibilidad controlada desde interfaz.
+*Botones de rotacion (0°,90°,-90°,180°).
+*Modo de manejo.
+ -Dron.
+ -F1.
+
+===BALLSWEEPER===DONE-ALL
+*Controlado por control 1
+*Modo de uso (Activar/Desactivar) solo un sentido y con un mismo boton.
+
+===PANCLSPINNER===DONE-MANUAL
+*Controlado por control 2
+*Modos de uso
+ -Automatico: Deteccion y accion desde un mismo boton(es)
+ -Manual: Deteccion responsabilidad del driver y accion mientras presiona un boton
+
+===DATLIFT===DONE-ALL
+*Controlado por control 2
+*Modo de uso manual con un boton
+
+===Cañon===DONE-MANUAL
+*Controlado por control 2
+*Modos de uso
+ -Automatico: Controla movimientos Pitch y Yaw(chasis) mientras se presiona un mismo boton;
+              Disparo automatico cuando se llegue a las revoluciones necesarias en el cañon
+		1.- Apunta
+		2.- Revoluciona
+		3.- Dispara
+ -Manual: Se apunta desde la interfaz con un mismo joystick
+	  Se revoluciona con un joystick diferente y see dispara con un boton
+
+
+===Compresor===DONE-ALL
+*Controlado por control 2
+*Modo de uso (Activar/Desactivar) con un mismo boton.
+
+
+
+
+
+===PWMPORT===
+0 - ballSweeper
+1 - panclSpinner
+2 - 
+3 - 
+4 - 
+5 - cañon superior
+6 - cañon inferior
+7 - cañon pitch
+8 - chasis izquierda
+9 - chasis derecha
+
+===PNEUMATICPORT===
+0 - datLiftIn
+1 - datLiftOut
+2 - panclIn
+3 - panclOut
+4
+5
+6
+7
+
+
+===AUTONOMO===
+*Clase que haga que el robot avance cierta distancia
+*Clase que haga girar el robot ciertos grados
+
+
+===CONTROL1===
+*LJY - movimiento
+*RJX - direccion
+*RB - yaw derecha
+*LB - yaw izquierda
+*LT - reversa
+*RT - avanza	
+*A  - ballSweeper
+*POV0 - giro 0° con respecto a la cancha
+*POV90 - giro 90° con respecto a la cancha
+*POV180 - giro 180° con respecto a la cancha
+*POV270 - giro -90° con respecto a la cancha
+
+
+===CONTROL2===
+*Y - datLift
+*Start - compresor (on/off)
+*RP - panclSpinner piston
+*RJX - panclSpinner motor
+*LJY - arppo pitch aim manual
+*LJX - arppo yaw aim manual
+*LB - arppo rev shoot manual
+*RB - arppo shoot manual
+*B - arppo automatico
+
+
+
+
+
+
+

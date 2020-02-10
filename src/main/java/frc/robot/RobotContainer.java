@@ -27,17 +27,29 @@ public class RobotContainer {
   public static AutoVisionSubsystem autoVisionSubsystem = new AutoVisionSubsystem();
   public static DriveSubsystem driveSubsystem = new DriveSubsystem();
   public static DeleteSubsystem deleteSubsytem = new DeleteSubsystem();
+  public static DatLiftSubsystem datLiftSubsystem = new DatLiftSubsystem();
+  public static CompressorCommand compressorCommand = new CompressorCommand();
+  public static BallSweeperCommand ballSweeperCommand = new BallSweeperCommand();
+  public static PanclSpinnerCommand panclSpinnerCommand = new PanclSpinnerCommand();
+  public static ArppoCommand arppoCommand = new ArppoCommand();
 
 
-  
   public static GyroCommand gyroCommand = new GyroCommand();
   public static CameraDriverCommand cameraDriverCommand = new CameraDriverCommand();
   public static AutoVisionCommand autoVisionCommand = new AutoVisionCommand();
   public static DriveCommand driveCommand = new DriveCommand();
   public static DeleteCommand deleteCommand = new DeleteCommand();
+  public static DatLiftCommand datLiftCommand = new DatLiftCommand();
+  public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
+  public static BallSweeperSubsystem ballSweeperSubsystem = new BallSweeperSubsystem();
+  public static PanclSpinnerSubsystem panclSpinnerSubsystem = new PanclSpinnerSubsystem();
+  public static ArppoSubsystem arppoSubsystem = new ArppoSubsystem();
 
-  
+
+
+
   public static Xbox360Controller driverControl = new Xbox360Controller(Constants.NUM_DRIVER_CONTROLLER);
+  public static Xbox360Controller mechanismControl = new Xbox360Controller(Constants.NUM_MECHANISM_CONTROLLER);
   public static DifferentialDrive chasis = new DifferentialDrive(new Spark(Constants.CHASIS_LEFT), new Spark(Constants.CHASIS_RIGHT));
   
   public static AutonomousSequence autonomousSequence = new AutonomousSequence();

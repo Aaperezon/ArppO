@@ -16,17 +16,35 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    //CHASIS VARIABLES
-    public static final int CHASIS_LEFT = 8;
-    public static final int CHASIS_RIGHT = 9;
-    
-    //GRIP OF THE BOX VARIABLES
-    public static final int PISTON_BOX_FORWARD = 3;
-    public static final int PISTON_BOX_REVERSE = 2;
-
     // NUMBER OF CONTROLLER FOR DRIVERS
     public static final int NUM_DRIVER_CONTROLLER = 0;
     public static final int NUM_MECHANISM_CONTROLLER = 1;
+    
+    
+    //** PWM **//
+    //BALLSWEEPER MOTOR PORT 
+    public static final int BALLSWEEPERPORT = 0;
+    //PANCLSPINNER MOTOR PORT
+    public static final int PANCLSPINNERPORT = 1;
+    //ARPPO MOTOR PORT
+    public static final int ARPPOPITCHPORT = 2;
+    public static final int ARPPOSUPERIOR = 3;
+    public static final int ARPPOINFERIOR = 4;
+    //CHASIS GEARBOX PORTS
+    public static final int CHASIS_LEFT = 8;
+    public static final int CHASIS_RIGHT = 9;
+   
+    //** PNEUMATICS **//
+    //SOLENOID PORTS FOR DATLIFT MECHANISM
+    public static final int DAT_IN = 0;
+    public static final int DAT_OUT = 1;
+    //SOLENOID PORTS FOR PANCLSPINNER MECHANISM
+    public static final int PANCL_IN = 2;
+    public static final int PANCL_OUT = 3;
+    //SOLENOID PORTS FOR ARPPO MECHANISM
+    public static final int ARPPO_HOLD = 4;
+    public static final int ARPPO_RELEASE = 5;
 
 
+    
 }
