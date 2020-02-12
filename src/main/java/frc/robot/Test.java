@@ -1,15 +1,17 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Compressor;
 public class Test {
     Spark cSuperior = new Spark(5);
     Spark cInferior = new Spark(6);
-    Spark pitch = new Spark(3);
+    //Spark pitch = new Spark(3);
     static final double vel1 = 1;
     static final double vel2 = .4;
     
     /*
-    DoubleSolenoid piston = new DoubleSolenoid(6, 7);
+    DoubleSolenoid piston = new DoubleSolenoid(0,1);
     boolean pOn = false;
     boolean pOff = false;
     Compressor compressor = new Compressor();
@@ -39,7 +41,7 @@ public class Test {
         }
 
 
-        
+        /*
         if(pMovementF > .1){
             pitch.set(pMovementF*vel2);
         }else if(pMovementB > -.1){
@@ -49,7 +51,7 @@ public class Test {
         }
 
 
-
+        */
 
 
         /*
@@ -69,7 +71,8 @@ public class Test {
         else {
             pOff = false;
         }
-
+        */
+        /*
         boolean botonCompresor = RobotContainer.driverControl.GetStart();
 
         if(cOn) {

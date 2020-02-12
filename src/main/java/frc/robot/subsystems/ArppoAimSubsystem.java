@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.MedianFilter;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-public class AutoVisionSubsystem extends SubsystemBase {
+public class ArppoAimSubsystem extends SubsystemBase {
   /**
    * Creates a new AutoVisionSubsystem.
    */
@@ -33,8 +33,11 @@ public class AutoVisionSubsystem extends SubsystemBase {
   private final MedianFilter m_filter = new MedianFilter(5);
   private final PIDController m_pidController = new PIDController(kP, kI, kD);
   private  NetworkTable table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("Microsoft LifeCam HD-3000");
-
-  public AutoVisionSubsystem() {
+  private int yawTolerance = 20;
+  private int pitchTolerance = 20;
+  private int yawCount =0;
+  private int pitchCount =0;
+  public ArppoAimSubsystem() {
     targetX=table.getEntry("targetYaw");   //Z
     targetY=table.getEntry("targetPitch"); //X
     m_pidController.setSetpoint(kHoldDistance);
@@ -42,54 +45,50 @@ public class AutoVisionSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    setDefaultCommand(RobotContainer.autoVisionCommand);
 
     // This method will be called once per scheduler run
   }
-  public void Run(boolean start){
-    if (start == true)//the action button
-    {
-      yaw=targetX.getDouble(0.0);
-      pitch=targetY.getDouble(0.0);
+  int dCount = 0;
+  public boolean Run(){
+    yaw=targetX.getDouble(0.0);
+    pitch=targetY.getDouble(0.0);
 
-      double turn = m_pidController.calculate(m_filter.calculate(-yaw));
-      System.out.println("Mover a:  "+turn+ "      ");
+    double setYaw = m_pidController.calculate(m_filter.calculate(-yaw));
+    double setPitch = m_pidController.calculate(m_filter.calculate(-yaw));
+    //System.out.println("Mover a:  "+setYaw+ "      "+setPitch);
 
-      //Output the power signals to a arcade drivetrain
-      RobotContainer.chasis.arcadeDrive(0, turn);
+    //RobotContainer.frikArppoAimSubsystem.Aim(pitch, yaw);
+
+    dCount++;
+    if(dCount>=40){
+      dCount =0;
+      return true;
+    }else{
+      System.out.println("Aim...");
+      return false;
+
     }
+    /*
+    if(setPitch>=-.1 && setPitch<=.1){
+      pitchCount++;
+    }
+    if(setYaw>=-.1 && setYaw<=.1){
+      yawCount++;
+    }
+
+    if(pitchCount >= pitchTolerance && yawCount >= yawTolerance){
+      pitchCount=0;
+      yawCount=0;
+      return true;
+    }
+    else{
+      pitchCount=0;
+      yawCount=0;
+      return false;
+    }
+  */
+
   }
 
-/*
-    Fetches the rotation and distance values from the vision co processor
-    sets the value to 0.0 if the value doesnt exist in the database
-*/
-/*
-rotationError=targetX.getDouble(0.0);
-distanceError=targetY.getDouble(0.0);
-
-/*
-    Proportional (to targetX) control loop for rotation
-    Deadzone of angleTolerance
-    Constant power is added to the direction the control loop wants to turn (to overcome friction)
-*/
-/*
-if(rotationError>angleTolerance)
-    rotationAjust=KpRot*rotationError+constantForce;
-else
-    if(rotationError<angleTolerance)
-        rotationAjust=KpRot*rotationError-constantForce;
-/*
-    Proportional (to targetY) control loop for distance
-    Deadzone of distanceTolerance
-    Constant power is added to the direction the control loop wants to turn (to overcome friction)
-*/
-/*
-if(distanceError>distanceTolerance)
-    distanceAjust=KpDist*distanceError+constantForce;
-else
-    if(distanceError<distanceTolerance)
-        distanceAjust=KpDist*distanceError-constantForce;
-*/
 
 }

@@ -10,27 +10,26 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class ArppoCommand extends CommandBase {
+public class FrikArppoShootCommand extends CommandBase {
   /**
-   * Creates a new ArppoCommand.
+   * Creates a new ArppoManualShootCommand.
    */
-  public ArppoCommand() {
+  public FrikArppoShootCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.arppoSubsystem);
+    addRequirements(RobotContainer.frikArppoShootSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double yaw = RobotContainer.mechanismControl.GetLJX();
-    double pitch = RobotContainer.mechanismControl.GetLJY();
-    boolean speedUp = RobotContainer.mechanismControl.GetLB();
     boolean shoot = RobotContainer.mechanismControl.GetRB();
-    RobotContainer.arppoSubsystem.ManualAim(yaw, pitch, speedUp, shoot);
+    RobotContainer.frikArppoShootSubsystem.Shoot(shoot);
+
   }
 
   // Called once the command ends or is interrupted.

@@ -8,34 +8,30 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotContainer;
 
-public class DeleteSubsystem extends SubsystemBase {
+public class ArppoRevSubsystem extends SubsystemBase {
   /**
-   * Creates a new DeleteSubsystem.
+   * Creates a new ArppoRevSubsystem.
    */
-  double variable;
-  public DeleteSubsystem() {
-    variable = 0;
+  public ArppoRevSubsystem() {
+
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    //setDefaultCommand(RobotContainer.deleteCommand);
-
   }
-  public boolean Go(){
-    variable++;
-    if(variable<=60){
-      return false;
-    }
-    else{
-      variable = 0;
+
+  int dCount =0;
+  public boolean Run(){
+    dCount++;
+    if(dCount>=40){
+      dCount=0;
       return true;
+    }else{
+      System.out.println("Rev...");
+      return false;
+
     }
   }
-
-
-
 }

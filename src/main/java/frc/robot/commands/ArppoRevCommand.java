@@ -10,27 +10,29 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class AutoVisionCommand extends CommandBase {
-  /**
-   * Creates a new AutoVisionCommand.
-   */
-  public AutoVisionCommand() {
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.autoVisionSubsystem);
+public class ArppoRevCommand extends CommandBase {
+  boolean terminate;
 
+  public ArppoRevCommand() {
+    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.frikArppoRevSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    terminate = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
-    boolean actionButton = RobotContainer.driverControl.GetY();
-    RobotContainer.autoVisionSubsystem.Run(actionButton);
+    if(RobotContainer.arppoRevSubsystem.Run()){
+      terminate = true;
+    }
+    else{
+      terminate = false;
+    }
   }
 
   // Called once the command ends or is interrupted.
@@ -41,6 +43,6 @@ public class AutoVisionCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return terminate;
   }
 }

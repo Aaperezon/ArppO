@@ -10,35 +10,30 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class DeleteCommand extends CommandBase {
-  /**
-   * Creates a new DeleteCommand.
-   */
-  int numero = 0;
-  boolean termina;
-  public DeleteCommand() {
+public class ArppoAimCommand extends CommandBase {
+  boolean terminate;
+  public ArppoAimCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.deleteSubsytem);
-  }
-  public DeleteCommand(int num){
-    numero = num;
-    addRequirements(RobotContainer.deleteSubsytem);
+    addRequirements();
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    termina = false;
+    terminate = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (RobotContainer.deleteSubsytem.Go()){
-      termina=true;
+    if(RobotContainer.arppoAimSubsystem.Run()){
+      terminate = true;
     }
-    System.out.println("PruebaComando"+numero);
-
+    else{
+      terminate = false;
+    }
+    
+   
   }
 
   // Called once the command ends or is interrupted.
@@ -49,6 +44,6 @@ public class DeleteCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return termina;
+    return terminate;
   }
 }

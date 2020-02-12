@@ -14,6 +14,8 @@ import frc.robot.Constants;
 import frc.robot.Xbox360Controller;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -22,38 +24,49 @@ import frc.robot.commands.*;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
-  public static CameraDriverSubsystem cameraDriverSubsystem = new CameraDriverSubsystem();
-  public static AutoVisionSubsystem autoVisionSubsystem = new AutoVisionSubsystem();
-  public static DriveSubsystem driveSubsystem = new DriveSubsystem();
-  public static DeleteSubsystem deleteSubsytem = new DeleteSubsystem();
-  public static DatLiftSubsystem datLiftSubsystem = new DatLiftSubsystem();
-  public static CompressorCommand compressorCommand = new CompressorCommand();
-  public static BallSweeperCommand ballSweeperCommand = new BallSweeperCommand();
-  public static PanclSpinnerCommand panclSpinnerCommand = new PanclSpinnerCommand();
-  public static ArppoCommand arppoCommand = new ArppoCommand();
 
-
-  public static GyroCommand gyroCommand = new GyroCommand();
-  public static CameraDriverCommand cameraDriverCommand = new CameraDriverCommand();
-  public static AutoVisionCommand autoVisionCommand = new AutoVisionCommand();
-  public static DriveCommand driveCommand = new DriveCommand();
-  public static DeleteCommand deleteCommand = new DeleteCommand();
-  public static DatLiftCommand datLiftCommand = new DatLiftCommand();
-  public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
-  public static BallSweeperSubsystem ballSweeperSubsystem = new BallSweeperSubsystem();
-  public static PanclSpinnerSubsystem panclSpinnerSubsystem = new PanclSpinnerSubsystem();
-  public static ArppoSubsystem arppoSubsystem = new ArppoSubsystem();
-
-
-
+  
 
   public static Xbox360Controller driverControl = new Xbox360Controller(Constants.NUM_DRIVER_CONTROLLER);
   public static Xbox360Controller mechanismControl = new Xbox360Controller(Constants.NUM_MECHANISM_CONTROLLER);
   public static DifferentialDrive chasis = new DifferentialDrive(new Spark(Constants.CHASIS_LEFT), new Spark(Constants.CHASIS_RIGHT));
+  //public static DifferentialDrive chasis = new DifferentialDrive(new VictorSPX(0), new VictorSPX(1));
   
+
+
+
+  public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
+  public static CameraDriverSubsystem cameraDriverSubsystem = new CameraDriverSubsystem();
+  public static DriveSubsystem driveSubsystem = new DriveSubsystem();
+  public static DatLiftSubsystem datLiftSubsystem = new DatLiftSubsystem();
+  public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
+  public static BallSweeperSubsystem ballSweeperSubsystem = new BallSweeperSubsystem();
+  public static PanclSpinnerSubsystem panclSpinnerSubsystem = new PanclSpinnerSubsystem();
+  public static FrikArppoAimSubsystem frikArppoAimSubsystem = new FrikArppoAimSubsystem();
+  public static FrikArppoRevSubsystem frikArppoRevSubsystem = new FrikArppoRevSubsystem();
+  public static FrikArppoShootSubsystem frikArppoShootSubsystem = new FrikArppoShootSubsystem();
+  public static ArppoAimSubsystem arppoAimSubsystem = new ArppoAimSubsystem();
+  public static ArppoRevSubsystem arppoRevSubsystem = new ArppoRevSubsystem();
+  public static ArppoShootSubsystem arppoShootSubsystem = new ArppoShootSubsystem();
+
+
+  public static GyroCommand gyroCommand = new GyroCommand();
+  public static CameraDriverCommand cameraDriverCommand = new CameraDriverCommand();
+  public static DriveCommand driveCommand = new DriveCommand();
+  public static DatLiftCommand datLiftCommand = new DatLiftCommand();
+  public static CompressorCommand compressorCommand = new CompressorCommand();
+  public static BallSweeperCommand ballSweeperCommand = new BallSweeperCommand();
+  public static PanclSpinnerCommand panclSpinnerCommand = new PanclSpinnerCommand();
+  public static FrikArppoAimCommand frikArppoAimCommand = new FrikArppoAimCommand();
+  public static FrikArppoRevCommand frikArppoRevCommand = new FrikArppoRevCommand();
+  public static FrikArppoShootCommand frikArppoShootCommand = new FrikArppoShootCommand();
+  public static ArppoAimCommand arppoAimCommand = new ArppoAimCommand();
+  public static ArppoRevCommand arppoRevCommand = new ArppoRevCommand();
+  public static ArppoShootCommand arppoShootCommand = new ArppoShootCommand();
+
   public static AutonomousSequence autonomousSequence = new AutonomousSequence();
 
+  public static ArppoAutoShoot arppoAutoShoot = new ArppoAutoShoot();
 
 
   /**
