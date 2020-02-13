@@ -60,7 +60,7 @@ public class ArppoAimSubsystem extends SubsystemBase {
     //RobotContainer.frikArppoAimSubsystem.Aim(pitch, yaw);
 
     dCount++;
-    if(dCount>=40){
+    if(dCount>=150){
       dCount =0;
       return true;
     }else{

@@ -25,7 +25,7 @@ public class ArppoRevSubsystem extends SubsystemBase {
   int dCount =0;
   public boolean Run(){
     dCount++;
-    if(dCount>=40){
+    if(dCount>=150){
       dCount=0;
       return true;
     }else{

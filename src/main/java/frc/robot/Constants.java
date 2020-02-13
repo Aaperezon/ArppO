@@ -46,5 +46,10 @@ public final class Constants {
     public static final int ARPPO_RELEASE = 5;
 
 
+    //** DIGITAL INPUTS **//
+    //LIMIT SWITCHES FOR ARPPO
+    public static final int FRIK_UP = 0;
+    public static final int FRIK_LOW = 1;
+
     
 }

@@ -80,7 +80,7 @@
 *POV90 - giro 90° con respecto a la cancha
 *POV180 - giro 180° con respecto a la cancha
 *POV270 - giro -90° con respecto a la cancha
-
+*X - Ver angulo de giroscopio
 
 ===CONTROL2===
 *Y - datLift

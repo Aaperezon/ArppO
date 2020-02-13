@@ -43,7 +43,7 @@ public class GyroSubsystem extends SubsystemBase {
 
   public void See(boolean action){
     if(action){
-      System.out.println("Angle: "+gyro.getAngle());
+      System.out.println("Angle: "+gyro.getRate());
     }
 
   }

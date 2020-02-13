@@ -8,32 +8,36 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+import edu.wpi.first.wpilibj.DigitalInput;
+public class FrikLimitSubsystem extends SubsystemBase {
+  DigitalInput upperLimit = new DigitalInput(Constants.FRIK_UP);
+  DigitalInput lowerLimit = new DigitalInput(Constants.FRIK_LOW );
 
-public class ArppoShootSubsystem extends SubsystemBase {
-  /**
-   * Creates a new ArppoShootSubsystem.
-   */
-  public ArppoShootSubsystem() {
+  public FrikLimitSubsystem() {
 
   }
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
   }
-  
-  int dCount =0;
-  public boolean Run(){
-    dCount++;
-    if(dCount>=150){
-      dCount=0;
-      return true;
-    }else{
-      System.out.println("Shoot...");
-      return false;
 
+  public boolean UpperLimitFree(){
+    if(upperLimit.get()){
+      return true;
     }
-  } 
+    else{
+      return false;
+    }
+  }
+  public boolean LowerLimitFree(){
+    if(lowerLimit.get()){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 
 
 

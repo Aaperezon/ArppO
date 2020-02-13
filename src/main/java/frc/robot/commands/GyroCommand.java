@@ -28,7 +28,7 @@ public class GyroCommand extends CommandBase {
   @Override
   public void execute() {
     boolean action = RobotContainer.driverControl.GetX();
-    //RobotContainer.gyroSubsystem.See(action);
+    RobotContainer.gyroSubsystem.See(action);
     //RobotContainer.gyroSubsystem.Go();
   }
 

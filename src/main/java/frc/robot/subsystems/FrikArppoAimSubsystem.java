@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.Spark;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -36,13 +37,17 @@ public class FrikArppoAimSubsystem extends SubsystemBase {
     else{
         RobotContainer.chasis.arcadeDrive(0, 0);
     }
-    
-    if(pitch >= .1 || pitch <= -.1){
+
+    if(pitch>=.1 && RobotContainer.frikLimitSubsystem.UpperLimitFree() == true){
+        pitchmotor.set(pitch*speedPitch);
+    }
+    else if(pitch<=-.1 && RobotContainer.frikLimitSubsystem.LowerLimitFree()==true){
         pitchmotor.set(pitch*speedPitch);
     }
     else{
         pitchmotor.set(0);
     }
+    
 
 }
 

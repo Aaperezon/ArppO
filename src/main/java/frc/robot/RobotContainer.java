@@ -48,7 +48,7 @@ public class RobotContainer {
   public static ArppoAimSubsystem arppoAimSubsystem = new ArppoAimSubsystem();
   public static ArppoRevSubsystem arppoRevSubsystem = new ArppoRevSubsystem();
   public static ArppoShootSubsystem arppoShootSubsystem = new ArppoShootSubsystem();
-
+  public static FrikLimitSubsystem frikLimitSubsystem = new FrikLimitSubsystem();
 
   public static GyroCommand gyroCommand = new GyroCommand();
   public static CameraDriverCommand cameraDriverCommand = new CameraDriverCommand();
