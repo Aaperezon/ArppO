@@ -15,7 +15,7 @@ import frc.robot.RobotContainer;
 
 public class FrikArppoAimSubsystem extends SubsystemBase {
   private Spark pitchmotor = new Spark(Constants.ARPPOPITCHPORT);
-  private double speedPitch = .2;
+  private double speedPitch = .35;
   private double speedYaw = .5;
 
 
@@ -32,10 +32,7 @@ public class FrikArppoAimSubsystem extends SubsystemBase {
 
   public void Aim(double pitch, double yaw){
     if(yaw >= .1 || yaw <= -1){
-        RobotContainer.chasis.arcadeDrive(0, yaw*speedYaw);
-    }
-    else{
-        RobotContainer.chasis.arcadeDrive(0, 0);
+        RobotContainer.chasis.tankDrive(yaw*speedYaw, -yaw*speedYaw);
     }
 
     if(pitch>=.1 && RobotContainer.frikLimitSubsystem.UpperLimitFree() == true){

@@ -48,8 +48,13 @@ public class FrikArppoRevSubsystem extends SubsystemBase {
       else {
         mOff = false;
       }
-}
+  }
 
+  public void Rev(double up, double down){
+    cSuperior.set(up);
+    cInferior.set(-down);
+
+  }
 
 
 

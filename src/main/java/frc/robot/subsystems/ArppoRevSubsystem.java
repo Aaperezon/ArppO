@@ -7,7 +7,9 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
 
 public class ArppoRevSubsystem extends SubsystemBase {
   /**
@@ -24,6 +26,7 @@ public class ArppoRevSubsystem extends SubsystemBase {
 
   int dCount =0;
   public boolean Run(){
+    RobotContainer.frikArppoRevSubsystem.Rev(.3, .34);
     dCount++;
     if(dCount>=150){
       dCount=0;

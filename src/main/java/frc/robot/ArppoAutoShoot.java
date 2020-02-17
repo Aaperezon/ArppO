@@ -24,8 +24,8 @@ public class ArppoAutoShoot extends SequentialCommandGroup {
     // super(new FooCommand(), new BarCommand());
     super(
       new ArppoAimCommand(),
-      new ArppoRevCommand(),
-      new ArppoShootCommand()
+      new ArppoRevCommand()
+      //new ArppoShootCommand()
 
     );
   }

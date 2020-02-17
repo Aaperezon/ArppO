@@ -16,6 +16,13 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    //CHASIS CAN DEVICE
+    public static final int LEFT_M1 = 3;
+    public static final int LEFT_M2 = 1;
+    public static final int RIGHT_M1 = 0;
+    public static final int RIGHT_M2 = 2;
+
     // NUMBER OF CONTROLLER FOR DRIVERS
     public static final int NUM_DRIVER_CONTROLLER = 0;
     public static final int NUM_MECHANISM_CONTROLLER = 1;

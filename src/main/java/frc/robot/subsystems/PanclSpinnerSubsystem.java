@@ -18,6 +18,7 @@ public class PanclSpinnerSubsystem extends SubsystemBase {
   private boolean pOn = false;
   private boolean pOff = false;
   private Spark motor = new Spark(Constants.PANCLSPINNERPORT);
+  private double vel = .3;
   public PanclSpinnerSubsystem() {
 
   }
@@ -46,7 +47,7 @@ public class PanclSpinnerSubsystem extends SubsystemBase {
   }
   public void StartUp(double action){
     if(action >= .1 || action <= -1){
-      motor.set(action);
+      motor.set(action*vel);
     }
     else{
       motor.set(0);

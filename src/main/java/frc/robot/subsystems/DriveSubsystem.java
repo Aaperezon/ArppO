@@ -54,7 +54,16 @@ public class DriveSubsystem extends SubsystemBase {
 	//speedV = maxSpeedV.getDouble(1.0);
 	//speedG = maxSpeedG.getDouble(1.0);
   }
-
+  /*
+  public void Prueba(double Throttle1, double ThrottleTurn){
+	if(Throttle1 >= .1 || Throttle1 <= -.1){
+		RobotContainer.chasis.arcadeDrive(Throttle1, ThrottleTurn);
+	}
+	else{
+		RobotContainer.chasis.arcadeDrive(Throttle1, ThrottleTurn);
+	}
+  }
+  */
   public void Dron(double Throttle1, double ThrottleTurn) {
 		if (Throttle1 >= .1) {
 			if (ThrottleTurn >= 0.1) {

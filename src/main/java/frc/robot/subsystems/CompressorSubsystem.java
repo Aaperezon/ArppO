@@ -10,11 +10,13 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class CompressorSubsystem extends SubsystemBase {
   Compressor compressor = new Compressor();
   boolean cOn = false;
   boolean cOff = false;
+  boolean comp = false;
   public CompressorSubsystem() {
 
   }
@@ -26,9 +28,11 @@ public class CompressorSubsystem extends SubsystemBase {
 
   public void StartUp(boolean boton){
     if(cOn) {
-      compressor.setClosedLoopControl(true);    
+      compressor.setClosedLoopControl(true);  
+      comp = true;  
     }else{
       compressor.setClosedLoopControl(false); 
+      comp = false;
     }
     if (boton == true) {
       if (!cOff) {
@@ -39,5 +43,7 @@ public class CompressorSubsystem extends SubsystemBase {
     else {
       cOff = false;
     }
+
+    SmartDashboard.putBoolean("Compressor", comp);
   }
 }

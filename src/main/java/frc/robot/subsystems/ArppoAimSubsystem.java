@@ -22,25 +22,33 @@ public class ArppoAimSubsystem extends SubsystemBase {
   NetworkTableEntry targetY;
   double yaw;
   double pitch;
-  // distance in inches the robot wants to stay from an object
-  private static final double kHoldDistance = 0;
-  // proportional speed constant
-  private static final double kP = .027;  //.027
-  // integral speed constant
-  private static final double kI = .01; //.01
-  // derivative speed constant
-  private static final double kD = .005; //.005
-  private final MedianFilter m_filter = new MedianFilter(5);
-  private final PIDController m_pidController = new PIDController(kP, kI, kD);
+  private static final double kTargetPitch = -8.5;
+  private static final double kTargetYaw = 8.5;
+
+  private static final double kPpitch = .1;  //.027
+  private static final double kIpitch = .01; //.01
+  private static final double kDpitch = .005; //.005
+
+  private final MedianFilter m_filterPitch = new MedianFilter(5);
+  private final PIDController m_pidControllerPitch = new PIDController(kPpitch, kIpitch, kDpitch);
   private  NetworkTable table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("Microsoft LifeCam HD-3000");
   private int yawTolerance = 20;
   private int pitchTolerance = 20;
   private int yawCount =0;
   private int pitchCount =0;
+
+  private static final double kPyaw = .07;  //.027
+  private static final double kIyaw = .015; //.01
+  private static final double kDyaw = .0126; //.005
+  private final MedianFilter m_filterYaw = new MedianFilter(5);
+  private final PIDController m_pidControllerYaw = new PIDController(kPyaw, kIyaw, kDyaw);
+  private int areaTolerance = 3;
+
   public ArppoAimSubsystem() {
     targetX=table.getEntry("targetYaw");   //Z
     targetY=table.getEntry("targetPitch"); //X
-    m_pidController.setSetpoint(kHoldDistance);
+    m_pidControllerPitch.setSetpoint(kTargetPitch);
+    m_pidControllerYaw.setSetpoint(kTargetYaw);
   }
 
   @Override
@@ -48,17 +56,17 @@ public class ArppoAimSubsystem extends SubsystemBase {
 
     // This method will be called once per scheduler run
   }
-  int dCount = 0;
+  //int dCount = 0;
   public boolean Run(){
     yaw=targetX.getDouble(0.0);
     pitch=targetY.getDouble(0.0);
 
-    double setYaw = m_pidController.calculate(m_filter.calculate(-yaw));
-    double setPitch = m_pidController.calculate(m_filter.calculate(-yaw));
-    //System.out.println("Mover a:  "+setYaw+ "      "+setPitch);
+    double setYaw = m_pidControllerYaw.calculate(m_filterYaw.calculate(-yaw));
+    double setPitch = m_pidControllerPitch.calculate(m_filterPitch.calculate(pitch));
+    //System.out.println("Mover a:  "+setPitch+ "      "+setYaw);
 
-    //RobotContainer.frikArppoAimSubsystem.Aim(pitch, yaw);
-
+    RobotContainer.frikArppoAimSubsystem.Aim(setPitch, setYaw);
+    /*
     dCount++;
     if(dCount>=150){
       dCount =0;
@@ -66,16 +74,14 @@ public class ArppoAimSubsystem extends SubsystemBase {
     }else{
       System.out.println("Aim...");
       return false;
-
     }
-    /*
-    if(setPitch>=-.1 && setPitch<=.1){
+    */
+    if(pitch>=(kTargetPitch+areaTolerance) && pitch<=(kTargetPitch-areaTolerance)){
       pitchCount++;
     }
-    if(setYaw>=-.1 && setYaw<=.1){
+    if(yaw>=(-kTargetYaw+areaTolerance) && yaw<=(-kTargetYaw-areaTolerance)){
       yawCount++;
     }
-
     if(pitchCount >= pitchTolerance && yawCount >= yawTolerance){
       pitchCount=0;
       yawCount=0;
@@ -86,7 +92,6 @@ public class ArppoAimSubsystem extends SubsystemBase {
       yawCount=0;
       return false;
     }
-  */
 
   }
 

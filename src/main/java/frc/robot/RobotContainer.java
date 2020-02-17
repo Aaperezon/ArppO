@@ -24,15 +24,13 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-
   
-
+  public static DriveTrain driveTrain = new DriveTrain();
   public static Xbox360Controller driverControl = new Xbox360Controller(Constants.NUM_DRIVER_CONTROLLER);
   public static Xbox360Controller mechanismControl = new Xbox360Controller(Constants.NUM_MECHANISM_CONTROLLER);
-  public static DifferentialDrive chasis = new DifferentialDrive(new Spark(Constants.CHASIS_LEFT), new Spark(Constants.CHASIS_RIGHT));
-  //public static DifferentialDrive chasis = new DifferentialDrive(new VictorSPX(0), new VictorSPX(1));
-  
 
+  public static DifferentialDrive chasis = new DifferentialDrive(driveTrain.Leftcontroller(), driveTrain.RightController());
+  //public static DifferentialDrive chasis = new DifferentialDrive(new Spark(8),new Spark(9));
 
 
   public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
@@ -67,7 +65,6 @@ public class RobotContainer {
   public static AutonomousSequence autonomousSequence = new AutonomousSequence();
 
   public static ArppoAutoShoot arppoAutoShoot = new ArppoAutoShoot();
-
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
