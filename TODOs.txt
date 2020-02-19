@@ -57,7 +57,7 @@
 1 - datLiftOut
 2 - panclIn
 3 - panclOut
-4
+4 - 
 5
 6
 7
@@ -86,14 +86,18 @@
 *Y - datLift
 *Start - compresor (on/off)
 *RP - panclSpinner piston
+*LP - cancel all AutomaticMechanisms
 *RJX - panclSpinner motor
 *LJY - arppo pitch aim manual
 *LJX - arppo yaw aim manual
 *LB - arppo rev shoot manual
 *RB - arppo shoot manual
 *B - arppo automatico
-
-
+*X - pancl see color detected
+*back - change camera mode
+*A - pancl Spin-Detect
+*RT - datliftMotor 
+*LT - datliftMotor 
 
 
 

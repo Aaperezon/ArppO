@@ -9,34 +9,28 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import edu.wpi.first.wpilibj.Timer;
 
-public class ArppoRevCommand extends CommandBase {
-  boolean terminate;
-  Timer time = new Timer();
-  public ArppoRevCommand() {
+public class DatLiftMotorCommand extends CommandBase {
+  /**
+   * Creates a new DatLiftMotorCommand.
+   */
+  public DatLiftMotorCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements();
+    addRequirements(RobotContainer.datLiftMotorSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    time.reset();
-    time.start();
-    terminate = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(time.get() < 3){
-      RobotContainer.arppoRevSubsystem.Run();
-      terminate = false;
-    }
-    else{
-      terminate = true;
-    }
+    double action1 = RobotContainer.mechanismControl.GetRT();
+    double action2 = RobotContainer.mechanismControl.GetLT();
+    RobotContainer.datLiftMotorSubsystem.StartUp(action1, action2);
+
   }
 
   // Called once the command ends or is interrupted.
@@ -47,6 +41,6 @@ public class ArppoRevCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return terminate;
+    return false;
   }
 }

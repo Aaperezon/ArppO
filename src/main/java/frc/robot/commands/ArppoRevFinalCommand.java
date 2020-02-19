@@ -7,16 +7,16 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj.Timer;
-
-public class ArppoRevCommand extends CommandBase {
+public class ArppoRevFinalCommand extends CommandBase {
   boolean terminate;
   Timer time = new Timer();
-  public ArppoRevCommand() {
+
+  public ArppoRevFinalCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements();
   }
 
   // Called when the command is initially scheduled.
@@ -30,7 +30,7 @@ public class ArppoRevCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(time.get() < 3){
+    if(time.get() < 6){
       RobotContainer.arppoRevSubsystem.Run();
       terminate = false;
     }

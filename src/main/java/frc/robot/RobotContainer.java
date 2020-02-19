@@ -47,6 +47,8 @@ public class RobotContainer {
   public static ArppoRevSubsystem arppoRevSubsystem = new ArppoRevSubsystem();
   public static ArppoShootSubsystem arppoShootSubsystem = new ArppoShootSubsystem();
   public static FrikLimitSubsystem frikLimitSubsystem = new FrikLimitSubsystem();
+  public static PanclColorSensorSubsystem panclColorSensorSubsystem = new PanclColorSensorSubsystem();
+  public static DatLiftMotorSubsystem datLiftMotorSubsystem = new DatLiftMotorSubsystem();
 
   public static GyroCommand gyroCommand = new GyroCommand();
   public static CameraDriverCommand cameraDriverCommand = new CameraDriverCommand();
@@ -61,11 +63,16 @@ public class RobotContainer {
   public static ArppoAimCommand arppoAimCommand = new ArppoAimCommand();
   public static ArppoRevCommand arppoRevCommand = new ArppoRevCommand();
   public static ArppoShootCommand arppoShootCommand = new ArppoShootCommand();
+  public static PanclColorSensorCommand panclColorSensorCommand = new PanclColorSensorCommand();
+  public static PanclDetectColor panclDetectColor = new PanclDetectColor();
+  public static DatLiftMotorCommand datLiftMotorCommand = new DatLiftMotorCommand();
 
+  
   public static AutonomousSequence autonomousSequence = new AutonomousSequence();
 
   public static ArppoAutoShoot arppoAutoShoot = new ArppoAutoShoot();
 
+  public static ColorSensor colorSensor = new ColorSensor();
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */

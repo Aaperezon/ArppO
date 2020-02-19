@@ -7,31 +7,25 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.ArppoAimCommand;
-import frc.robot.commands.ArppoRevCommand;
-import frc.robot.commands.ArppoRevFinalCommand;
-import frc.robot.commands.ArppoShootCommand;
+import frc.robot.commands.PanclColorCount;
+import frc.robot.commands.PanclDetectColor;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class ArppoAutoShoot extends SequentialCommandGroup {
+public class ColorSensor extends SequentialCommandGroup {
   /**
-   * Creates a new ArppoAutoShoot.
+   * Creates a new ColorSensor.
    */
-  public ArppoAutoShoot() {
+  public ColorSensor() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(
-      new ArppoAimCommand(),
-      new ArppoRevCommand(),
-      new ParallelCommandGroup(
-        new ArppoRevFinalCommand(),
-        new ArppoShootCommand())
-
-        
+      new PanclDetectColor(),
+      new PanclColorCount(),
+      new PanclDetectColor()
     );
+
   }
 }

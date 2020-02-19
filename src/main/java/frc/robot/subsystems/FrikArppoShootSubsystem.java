@@ -32,20 +32,32 @@ public class FrikArppoShootSubsystem extends SubsystemBase {
 
 
   public void Shoot(boolean shoot){
-    if(pOn) {
+    if(pOn && RobotContainer.arppoAutoShoot.isScheduled()==false){
         piston.set(DoubleSolenoid.Value.kForward);
     }else{
     piston.set(DoubleSolenoid.Value.kReverse);
     }
     if (shoot == true) {
-    if (!pOff) {
-        pOn = !pOn;
-        pOff = true;
-    }
+      if (!pOff) {
+          pOn = !pOn;
+          pOff = true;
+      }
     }
     else {
     pOff = false;
     }
+
+  }
+
+  public void Hold(){
+    piston.set(DoubleSolenoid.Value.kReverse);
+
+
+  }
+
+  public void Release(){
+    piston.set(DoubleSolenoid.Value.kForward);
+
 
   }
 

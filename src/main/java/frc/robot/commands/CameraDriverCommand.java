@@ -25,7 +25,7 @@ public class CameraDriverCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean action = RobotContainer.driverControl.GetBack();
+    boolean action = RobotContainer.mechanismControl.GetBack();
     if(cOn) {
       RobotContainer.cameraDriverSubsystem.Run(true);
     }else{

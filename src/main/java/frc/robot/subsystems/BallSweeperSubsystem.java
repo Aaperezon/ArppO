@@ -29,7 +29,7 @@ public class BallSweeperSubsystem extends SubsystemBase {
 
   public void StartUp(boolean boton){
     if(mOn) {
-      motor.set(.7);
+      motor.set(.8);
     }else{
       motor.set(0);
     }

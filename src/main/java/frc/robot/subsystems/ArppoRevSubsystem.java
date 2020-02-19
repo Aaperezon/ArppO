@@ -25,16 +25,20 @@ public class ArppoRevSubsystem extends SubsystemBase {
   }
 
   int dCount =0;
-  public boolean Run(){
-    RobotContainer.frikArppoRevSubsystem.Rev(.3, .34);
+  public void Run(){
+    RobotContainer.frikArppoRevSubsystem.Rev(.6, .6);
+    /*
     dCount++;
-    if(dCount>=150){
+    if(dCount>=50){
       dCount=0;
       return true;
     }else{
-      System.out.println("Rev...");
+      //System.out.println("Rev...");
       return false;
 
     }
+    */
   }
+
+
 }

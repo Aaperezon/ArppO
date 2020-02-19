@@ -17,7 +17,7 @@ public class FrikArppoRevSubsystem extends SubsystemBase {
   private Spark cInferior = new Spark(Constants.ARPPOINFERIOR);
   private Boolean mOn = false;
   private Boolean mOff = false;
-  private double speed = .7;
+  private double speed = 1;
 
 
   public FrikArppoRevSubsystem() {

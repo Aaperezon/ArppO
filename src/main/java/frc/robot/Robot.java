@@ -87,30 +87,38 @@ public class Robot extends TimedRobot {
    * This function is called periodically during operator control.
    */
   boolean aim = false;
-  boolean shootOn = false;
-  boolean shootOff = false;
-
+  boolean color = false;
   @Override
   public void teleopPeriodic() {
     boolean activate = RobotContainer.mechanismControl.GetB();
-    if (shootOn) {
-      RobotContainer.arppoAutoShoot.schedule();
-      aim = true;
-    } else {
-      RobotContainer.arppoAutoShoot.cancel();
-      aim = false;
-
-    }
     if (activate == true) {
-      if (!shootOff) {
-        shootOn = !shootOn;
-        shootOff = true;
-      }
-    } else {
-      shootOff = false;
+      RobotContainer.arppoAutoShoot.schedule();
+    }else{
+    }
+    if(RobotContainer.arppoAutoShoot.isScheduled()){
+      aim = true;
+    }else{
+      aim = false;
+    }
+    if(RobotContainer.colorSensor.isScheduled()){
+      color = true;
+    }else{
+      color = false;
     }
     SmartDashboard.putBoolean("Aim", aim);
+    SmartDashboard.putBoolean("Color", color);
 
+    boolean detect = RobotContainer.mechanismControl.GetA();
+    if(detect == true){
+      RobotContainer.colorSensor.schedule();
+    }
+       
+    boolean cancel = RobotContainer.mechanismControl.GetLP();
+    if(cancel == true){
+      RobotContainer.colorSensor.cancel();
+      RobotContainer.arppoAutoShoot.cancel();
+
+    }
     
     
   }

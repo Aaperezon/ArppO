@@ -10,42 +10,30 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-public class ArppoShootSubsystem extends SubsystemBase {
+import edu.wpi.first.wpilibj.Spark;
+public class DatLiftMotorSubsystem extends SubsystemBase {
 
-  boolean pOn = false;
-  boolean pOff = false;
-  long endTime;
-  long time = 3000;
-
-  public ArppoShootSubsystem() {
-    
+  Spark motor = new Spark(Constants.DATLIFT_MOTOR);
+  public DatLiftMotorSubsystem() {
 
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    setDefaultCommand(RobotContainer.datLiftMotorCommand);
   }
-  
-  int dCount =0;
-  public void Run(){
-    RobotContainer.frikArppoShootSubsystem.Release();
-    /*
-    dCount++;
-    if(dCount>=1000){
-      dCount=0;
-      RobotContainer.frikArppoShootSubsystem.Hold();
-      return true;
-    }else{
-      //System.out.println("Shoot...");
-      return false;
 
+  public void StartUp(double action1, double action2){
+    if(action1 >= .1){
+      motor.set(action1);
     }
-    */
-  } 
-
-
-
+    else if(action2 >= .1){
+      motor.set(-action2);
+    }
+    else{
+      motor.set(0);
+    }
+  }
 
 }

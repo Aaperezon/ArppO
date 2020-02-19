@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.MedianFilter;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -22,7 +23,7 @@ public class ArppoAimSubsystem extends SubsystemBase {
   NetworkTableEntry targetY;
   double yaw;
   double pitch;
-  private static final double kTargetPitch = -8.5;
+  private static final double kTargetPitch = -22;
   private static final double kTargetYaw = 8.5;
 
   private static final double kPpitch = .1;  //.027
@@ -32,8 +33,8 @@ public class ArppoAimSubsystem extends SubsystemBase {
   private final MedianFilter m_filterPitch = new MedianFilter(5);
   private final PIDController m_pidControllerPitch = new PIDController(kPpitch, kIpitch, kDpitch);
   private  NetworkTable table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("Microsoft LifeCam HD-3000");
-  private int yawTolerance = 20;
-  private int pitchTolerance = 20;
+  private int yawTolerance = 100;
+  private int pitchTolerance = 100;
   private int yawCount =0;
   private int pitchCount =0;
 
@@ -42,7 +43,7 @@ public class ArppoAimSubsystem extends SubsystemBase {
   private static final double kDyaw = .0126; //.005
   private final MedianFilter m_filterYaw = new MedianFilter(5);
   private final PIDController m_pidControllerYaw = new PIDController(kPyaw, kIyaw, kDyaw);
-  private int areaTolerance = 3;
+  private double areaTolerance = 3.5;
 
   public ArppoAimSubsystem() {
     targetX=table.getEntry("targetYaw");   //Z
@@ -53,9 +54,10 @@ public class ArppoAimSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-
     // This method will be called once per scheduler run
   }
+  boolean p = false;
+  boolean y= false;
   //int dCount = 0;
   public boolean Run(){
     yaw=targetX.getDouble(0.0);
@@ -76,24 +78,32 @@ public class ArppoAimSubsystem extends SubsystemBase {
       return false;
     }
     */
-    if(pitch>=(kTargetPitch+areaTolerance) && pitch<=(kTargetPitch-areaTolerance)){
+    //System.out.println(pitch+" <= "+(kTargetPitch+areaTolerance)+"   "+pitch+" >= "+(kTargetPitch-areaTolerance));
+
+    if(pitch<=(kTargetPitch+areaTolerance) && pitch>=(kTargetPitch-areaTolerance)){
       pitchCount++;
+      p=true;
     }
-    if(yaw>=(-kTargetYaw+areaTolerance) && yaw<=(-kTargetYaw-areaTolerance)){
+    else{
+      p=false;
+    }
+    if(yaw<=(-kTargetYaw+areaTolerance) && yaw>=(-kTargetYaw-areaTolerance)){
       yawCount++;
+      y=true;
     }
+    else{
+      y=false;
+    }
+
+    SmartDashboard.putBoolean("Pitch", p);
+    SmartDashboard.putBoolean("Yaw", y);
     if(pitchCount >= pitchTolerance && yawCount >= yawTolerance){
       pitchCount=0;
       yawCount=0;
       return true;
     }
     else{
-      pitchCount=0;
-      yawCount=0;
       return false;
     }
-
   }
-
-
 }

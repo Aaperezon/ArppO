@@ -20,12 +20,13 @@ import frc.robot.RobotContainer;
  * Add your docs here.
  */
 public class DriveSubsystem extends SubsystemBase {
+	/*
 	private double speed = 1;
 	private double speedV = .5;
 	private double speedG = .8;
+	*/
 	private String direction;	
 
-	/*
 	private ShuffleboardTab tab = Shuffleboard.getTab("Drive");
 	private NetworkTableEntry maxSpeed =
 		tab.add("Max Speed", 1)
@@ -43,16 +44,15 @@ public class DriveSubsystem extends SubsystemBase {
 		.withWidget(BuiltInWidgets.kNumberSlider) // specify the widget here
 		.getEntry();
 	private double speedG = maxSpeedG.getDouble(1.0);
-	*/
   public DriveSubsystem() {
   }
 
   @Override
   public void periodic() {
 	setDefaultCommand(RobotContainer.driveCommand);
-	//speed = maxSpeed.getDouble(1.0);
-	//speedV = maxSpeedV.getDouble(1.0);
-	//speedG = maxSpeedG.getDouble(1.0);
+	speed = maxSpeed.getDouble(1.0);
+	speedV = maxSpeedV.getDouble(1.0);
+	speedG = maxSpeedG.getDouble(1.0);
   }
   /*
   public void Prueba(double Throttle1, double ThrottleTurn){

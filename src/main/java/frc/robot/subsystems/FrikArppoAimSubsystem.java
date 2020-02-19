@@ -35,10 +35,10 @@ public class FrikArppoAimSubsystem extends SubsystemBase {
         RobotContainer.chasis.tankDrive(yaw*speedYaw, -yaw*speedYaw);
     }
 
-    if(pitch>=.1 && RobotContainer.frikLimitSubsystem.UpperLimitFree() == true){
+    if(pitch>=.1 && RobotContainer.frikLimitSubsystem.LowerLimitFree() == true){
         pitchmotor.set(pitch*speedPitch);
     }
-    else if(pitch<=-.1 && RobotContainer.frikLimitSubsystem.LowerLimitFree()==true){
+    else if(pitch<=-.1 && RobotContainer.frikLimitSubsystem.UpperLimitFree()==true){
         pitchmotor.set(pitch*speedPitch);
     }
     else{

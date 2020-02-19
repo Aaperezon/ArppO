@@ -27,7 +27,7 @@ public final class Constants {
     public static final int NUM_DRIVER_CONTROLLER = 0;
     public static final int NUM_MECHANISM_CONTROLLER = 1;
     
-    
+
     //** PWM **//
     //BALLSWEEPER MOTOR PORT 
     public static final int BALLSWEEPERPORT = 0;
@@ -37,17 +37,19 @@ public final class Constants {
     public static final int ARPPOPITCHPORT = 2;
     public static final int ARPPOSUPERIOR = 3;
     public static final int ARPPOINFERIOR = 4;
+    //DATLIFT MOTOR
+    public static final int DATLIFT_MOTOR = 5;
     //CHASIS GEARBOX PORTS
     public static final int CHASIS_LEFT = 8;
     public static final int CHASIS_RIGHT = 9;
-   
+    
     //** PNEUMATICS **//
     //SOLENOID PORTS FOR DATLIFT MECHANISM
     public static final int DAT_IN = 0;
     public static final int DAT_OUT = 1;
     //SOLENOID PORTS FOR PANCLSPINNER MECHANISM
-    public static final int PANCL_IN = 2;
-    public static final int PANCL_OUT = 3;
+    public static final int PANCL_IN = 3;
+    public static final int PANCL_OUT = 2;
     //SOLENOID PORTS FOR ARPPO MECHANISM
     public static final int ARPPO_HOLD = 4;
     public static final int ARPPO_RELEASE = 5;
@@ -55,8 +57,10 @@ public final class Constants {
 
     //** DIGITAL INPUTS **//
     //LIMIT SWITCHES FOR ARPPO
-    public static final int FRIK_UP = 0;
-    public static final int FRIK_LOW = 1;
+    public static final int FRIK_UP = 1;
+    public static final int FRIK_LOW = 0;
+
+
 
     
 }
