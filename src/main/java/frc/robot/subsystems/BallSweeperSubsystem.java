@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class BallSweeperSubsystem extends SubsystemBase {
   private Spark motor = new Spark(Constants.BALLSWEEPERPORT);
   private Boolean mOn = false;
@@ -26,12 +27,14 @@ public class BallSweeperSubsystem extends SubsystemBase {
     setDefaultCommand(RobotContainer.ballSweeperCommand);
   }
 
-
+  boolean on;
   public void StartUp(boolean boton){
     if(mOn) {
-      motor.set(.8);
+      motor.set(1);
+      on = true;
     }else{
       motor.set(0);
+      on = false;
     }
     if (boton == true) {
       if (!mOff) {
@@ -42,6 +45,8 @@ public class BallSweeperSubsystem extends SubsystemBase {
     else {
       mOff = false;
     }
+    SmartDashboard.putBoolean("BallSweeper", on);
 
   }
+
 }

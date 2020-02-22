@@ -23,7 +23,7 @@ public class ArppoAimSubsystem extends SubsystemBase {
   NetworkTableEntry targetY;
   double yaw;
   double pitch;
-  private static final double kTargetPitch = -22;
+  private static final double kTargetPitch = -25;
   private static final double kTargetYaw = 8.5;
 
   private static final double kPpitch = .1;  //.027

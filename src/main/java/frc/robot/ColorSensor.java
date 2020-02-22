@@ -23,8 +23,7 @@ public class ColorSensor extends SequentialCommandGroup {
     // super(new FooCommand(), new BarCommand());
     super(
       new PanclDetectColor(),
-      new PanclColorCount(),
-      new PanclDetectColor()
+      new PanclColorCount()
     );
 
   }

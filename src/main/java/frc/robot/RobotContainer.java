@@ -32,8 +32,8 @@ public class RobotContainer {
   public static DifferentialDrive chasis = new DifferentialDrive(driveTrain.Leftcontroller(), driveTrain.RightController());
   //public static DifferentialDrive chasis = new DifferentialDrive(new Spark(8),new Spark(9));
 
-
-  public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
+  public static AutonomousDriveSubsystem autonomousDriveSubsystem = new AutonomousDriveSubsystem();
+  public static AutonomousGyroSubsystem autonomousGyroSubsystem = new AutonomousGyroSubsystem();
   public static CameraDriverSubsystem cameraDriverSubsystem = new CameraDriverSubsystem();
   public static DriveSubsystem driveSubsystem = new DriveSubsystem();
   public static DatLiftSubsystem datLiftSubsystem = new DatLiftSubsystem();
@@ -50,7 +50,8 @@ public class RobotContainer {
   public static PanclColorSensorSubsystem panclColorSensorSubsystem = new PanclColorSensorSubsystem();
   public static DatLiftMotorSubsystem datLiftMotorSubsystem = new DatLiftMotorSubsystem();
 
-  public static GyroCommand gyroCommand = new GyroCommand();
+  public static AutonomousDriveCommand autonomousDriveCommand = new AutonomousDriveCommand();
+  public static AutonomousGyroCommand autonomousGyroCommand = new AutonomousGyroCommand();
   public static CameraDriverCommand cameraDriverCommand = new CameraDriverCommand();
   public static DriveCommand driveCommand = new DriveCommand();
   public static DatLiftCommand datLiftCommand = new DatLiftCommand();

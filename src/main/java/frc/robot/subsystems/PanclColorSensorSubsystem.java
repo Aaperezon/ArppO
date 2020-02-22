@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
-
+import edu.wpi.first.wpilibj.DriverStation;
 import com.revrobotics.ColorSensorV3;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorMatch;
@@ -43,7 +43,10 @@ public class PanclColorSensorSubsystem extends SubsystemBase {
     setDefaultCommand(RobotContainer.panclColorSensorCommand);
     
   }
+  public void Data(){
+    
   
+  }
   public String ColorMatch(boolean action){
     if(action == true){
       Color detectedColor = m_colorSensor.getColor();
@@ -59,6 +62,7 @@ public class PanclColorSensorSubsystem extends SubsystemBase {
       } else {
         colorString = "null";
       }
+      
       /*
       SmartDashboard.putNumber("Red", detectedColor.red);
       SmartDashboard.putNumber("Green", detectedColor.green);
@@ -78,7 +82,7 @@ public class PanclColorSensorSubsystem extends SubsystemBase {
   public boolean SetColor(){
     colorSelection = ColorMatch(true);
     if(colorSelection != "null"){
-      System.out.println("El color es "+colorSelection);
+      //System.out.println("El color es "+colorSelection);
       return true;
     }else{
       return false;
@@ -88,29 +92,82 @@ public class PanclColorSensorSubsystem extends SubsystemBase {
   int count = 0;
   boolean spin = true;
   public boolean SpinUntilColor(){
-    do{
-      String color = ColorMatch(true);
-      RobotContainer.panclSpinnerSubsystem.StartUp(.8);
-      if(color!=colorSelection && color != "null"){
-        spin = false;
-      }else if(color == "null"){
-        spin = true;
+    String gameData = DriverStation.getInstance().getGameSpecificMessage();
+    if(gameData.length() > 0)
+    {
+      switch (gameData.charAt(0))
+      {
+        case 'B' :
+          colorSelection = "Blue";
+          break;
+        case 'G' :
+          colorSelection = "Green";
+          break;
+        case 'R' :
+          colorSelection = "Red ";
+          break;
+        case 'Y' :
+          colorSelection = "Yellow ";
+          break;
+        default :
+          break;
       }
-      if(spin == false && color == colorSelection){
-        count++;
-        spin = true;
-        System.out.println("Se encontro "+count+" veces");
-      }
-     
-      SmartDashboard.putNumber("Count", count);
+      
 
-    }while(count <= 3);
-    RobotContainer.panclSpinnerSubsystem.StartUp(0);
-    count = 0;
-    spin = true;
-    colorSelection = "null";
+      do{
+        String color = ColorMatch(true);
 
+  
+        RobotContainer.panclSpinnerSubsystem.StartUp(.8);
+        
+        if(color!=colorSelection && color != "null"){
+          spin = false;
+        }else if(color == "null"){
+          spin = true;
+        }
+        if(spin == false && color == colorSelection){
+          count++;
+          spin = true;
+          //System.out.println("Se encontro "+count+" veces");
+        }
+      
+        SmartDashboard.putNumber("Count", count);
+
+      }while(count <1);
+      RobotContainer.panclSpinnerSubsystem.StartUp(0);
+      count = 0;
+      spin = true;
+      colorSelection = "null";
+
+
+
+    } else {
+
+      do{
+        String color = ColorMatch(true);
+        RobotContainer.panclSpinnerSubsystem.StartUp(.8);
+        if(color!=colorSelection && color != "null"){
+          spin = false;
+        }else if(color == "null"){
+          spin = true;
+        }
+        if(spin == false && color == colorSelection){
+          count++;
+          spin = true;
+          System.out.println("Se encontro "+count+" veces");
+        }
+      
+        SmartDashboard.putNumber("Count", count);
+
+      }while(count <= 3);
+      RobotContainer.panclSpinnerSubsystem.StartUp(0);
+      count = 0;
+      spin = true;
+      colorSelection = "null";
+    }
     return true;
+
+
   }
 
 

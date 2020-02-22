@@ -7,15 +7,13 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotContainer;
 
-public class ArppoRevSubsystem extends SubsystemBase {
+public class AutonomousDriveSubsystem extends SubsystemBase {
   /**
-   * Creates a new ArppoRevSubsystem.
+   * Creates a new AutonomousDriveSubsystem.
    */
-  public ArppoRevSubsystem() {
+  public AutonomousDriveSubsystem() {
 
   }
 
@@ -23,22 +21,4 @@ public class ArppoRevSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
-  int dCount =0;
-  public void Run(){
-    RobotContainer.frikArppoRevSubsystem.Rev(.7, .8); //.6 ; .8
-    /*
-    dCount++;
-    if(dCount>=50){
-      dCount=0;
-      return true;
-    }else{
-      //System.out.println("Rev...");
-      return false;
-
-    }
-    */
-  }
-
-
 }

@@ -10,26 +10,38 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class PanclColorSensorCommand extends CommandBase {
+public class AutonomousGyroCommand extends CommandBase {
   /**
-   * Creates a new PanclColorSensorCommand.
+   * Creates a new GyroCommand.
    */
-  public PanclColorSensorCommand() {
+  boolean terminate;
+  public AutonomousGyroCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.panclColorSensorSubsystem);
+    addRequirements();
+  }
+  public AutonomousGyroCommand(double deg){
+    RobotContainer.autonomousGyroSubsystem.SetDegree(deg);
+
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    terminate = false;
   }
-  
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean action = RobotContainer.mechanismControl.GetX();
-    RobotContainer.panclColorSensorSubsystem.ColorMatch(true);
-    RobotContainer.panclColorSensorSubsystem.Data();
+    //boolean action = RobotContainer.driverControl.GetX();
+    //RobotContainer.autonomousGyroSubsystem.See(action);
+    if(RobotContainer.autonomousGyroSubsystem.Go() == true){
+      terminate = true;
+    }
+    else{
+      terminate = false;
+    }
+    
   }
 
   // Called once the command ends or is interrupted.
@@ -40,6 +52,6 @@ public class PanclColorSensorCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return terminate;
   }
 }

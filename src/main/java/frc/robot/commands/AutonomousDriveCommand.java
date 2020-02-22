@@ -8,15 +8,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
 
-public class GyroCommand extends CommandBase {
+public class AutonomousDriveCommand extends CommandBase {
   /**
-   * Creates a new GyroCommand.
+   * Creates a new AutonomousDriveCommand.
    */
-  public GyroCommand() {
+  public AutonomousDriveCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.gyroSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -27,9 +25,6 @@ public class GyroCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean action = RobotContainer.driverControl.GetX();
-    RobotContainer.gyroSubsystem.See(action);
-    //RobotContainer.gyroSubsystem.Go();
   }
 
   // Called once the command ends or is interrupted.
