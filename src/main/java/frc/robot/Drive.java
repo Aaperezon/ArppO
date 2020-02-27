@@ -7,28 +7,22 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.AimUpwardCommand;
-import frc.robot.commands.ArppoAimCommand;
-import frc.robot.commands.ArppoRevCommand;
-import frc.robot.commands.ArppoRevFinalCommand;
-import frc.robot.commands.ArppoShootCommand;
 import frc.robot.commands.AutonomousDriveCommand;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class AutonomousSequence extends SequentialCommandGroup {
+public class Drive extends SequentialCommandGroup {
   /**
-   * Creates a new AutonomousSequence.
+   * Creates a new Drive.
    */
-  public AutonomousSequence() {
+  public Drive() {
+    // Add your commands in the super() call, e.g.
+    // super(new FooCommand(), new BarCommand());
     super(
-      new AimUpwardCommand()
-    
-    );  
-      
 
+    new AutonomousDriveCommand(-30)
+    );
   }
 }

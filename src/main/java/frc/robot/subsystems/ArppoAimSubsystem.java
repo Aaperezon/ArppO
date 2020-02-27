@@ -23,8 +23,8 @@ public class ArppoAimSubsystem extends SubsystemBase {
   NetworkTableEntry targetY;
   double yaw;
   double pitch;
-  private static final double kTargetPitch = -25;
-  private static final double kTargetYaw = 8.5;
+  private static final double kTargetPitch = -3;
+  private static final double kTargetYaw = 17;
 
   private static final double kPpitch = .1;  //.027
   private static final double kIpitch = .01; //.01
@@ -33,17 +33,17 @@ public class ArppoAimSubsystem extends SubsystemBase {
   private final MedianFilter m_filterPitch = new MedianFilter(5);
   private final PIDController m_pidControllerPitch = new PIDController(kPpitch, kIpitch, kDpitch);
   private  NetworkTable table=NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("Microsoft LifeCam HD-3000");
-  private int yawTolerance = 100;
-  private int pitchTolerance = 100;
+  private int yawTolerance = 200;
+  private int pitchTolerance = 200;
   private int yawCount =0;
   private int pitchCount =0;
 
   private static final double kPyaw = .07;  //.027
   private static final double kIyaw = .015; //.01
-  private static final double kDyaw = .0126; //.005
+  private static final double kDyaw = .013; //.005
   private final MedianFilter m_filterYaw = new MedianFilter(5);
   private final PIDController m_pidControllerYaw = new PIDController(kPyaw, kIyaw, kDyaw);
-  private double areaTolerance = 3.5;
+  private double areaTolerance = 6;
 
   public ArppoAimSubsystem() {
     targetX=table.getEntry("targetYaw");   //Z

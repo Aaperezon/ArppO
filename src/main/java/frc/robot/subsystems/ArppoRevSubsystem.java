@@ -26,7 +26,7 @@ public class ArppoRevSubsystem extends SubsystemBase {
 
   int dCount =0;
   public void Run(){
-    RobotContainer.frikArppoRevSubsystem.Rev(.7, .8); //.6 ; .8
+    RobotContainer.frikArppoRevSubsystem.Rev(.6, 1); //.6 ; .8
     /*
     dCount++;
     if(dCount>=50){

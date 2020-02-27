@@ -8,23 +8,36 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
+import frc.robot.RobotContainer;
+import edu.wpi.first.wpilibj.Timer;
 public class AutonomousDriveCommand extends CommandBase {
-  /**
-   * Creates a new AutonomousDriveCommand.
-   */
+  boolean termminate;
   public AutonomousDriveCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
+  }
+  public AutonomousDriveCommand(double distance){
+    RobotContainer.autonomousDriveSubsystem.SetDistance(distance);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    termminate = false;
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    if(RobotContainer.autonomousDriveSubsystem.GoTo() == true){
+      termminate = true;
+    }
+    else{
+
+      termminate = false;
+    }
+
+
   }
 
   // Called once the command ends or is interrupted.
@@ -35,6 +48,6 @@ public class AutonomousDriveCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return termminate;
   }
 }

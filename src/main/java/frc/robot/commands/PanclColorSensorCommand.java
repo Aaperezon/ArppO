@@ -27,7 +27,6 @@ public class PanclColorSensorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean action = RobotContainer.mechanismControl.GetX();
     RobotContainer.panclColorSensorSubsystem.ColorMatch(true);
     RobotContainer.panclColorSensorSubsystem.Data();
   }

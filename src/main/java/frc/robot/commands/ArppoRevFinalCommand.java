@@ -30,7 +30,7 @@ public class ArppoRevFinalCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(time.get() < 4){
+    if(time.get() < 7){
       RobotContainer.arppoRevSubsystem.Run();
       terminate = false;
     }

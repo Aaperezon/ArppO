@@ -14,24 +14,20 @@ import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.MedianFilter;
 import edu.wpi.first.wpilibj.controller.PIDController;
 public class AutonomousGyroSubsystem extends SubsystemBase {
-  /**
-   * Creates a new GyroSubsystem.
-   */
   // distance in inches the robot wants to stay from an object
-  private static double kHoldPosition = 0;
+  private double kHoldPosition = 0;
   // proportional speed constant
-  private static final double kP = 40;  //.035
+  private static final double kP = .065;  //.035
   // integral speed constant
-  private static final double kI = .15; //.013
+  private static final double kI = .015; //.013
   // derivative speed constant
-  private static final double kD = .24; //.002
-  private final MedianFilter m_filter = new MedianFilter(5);
-  private final PIDController m_pidController = new PIDController(kP, kI, kD);
+  private static final double kD = .027; //.002
+  private static MedianFilter m_filter  = new MedianFilter(5);
+  private static PIDController m_pidController = new PIDController(kP, kI, kD);
 
-  Gyro gyro = new ADIS16448_IMU();
+  private static Gyro gyro = new ADIS16448_IMU();
 
   public AutonomousGyroSubsystem() {
-    gyro.reset();
     m_pidController.setSetpoint(kHoldPosition);
   }
 
@@ -41,9 +37,15 @@ public class AutonomousGyroSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
   public void SetDegree(double deg){
-    gyro.reset();
     kHoldPosition = deg;
     m_pidController.setSetpoint(kHoldPosition);
+
+  }
+  public void Reset(){
+    m_filter.reset();
+    m_pidController.reset();
+    gyro.reset();
+
 
   }
 
@@ -66,7 +68,8 @@ public class AutonomousGyroSubsystem extends SubsystemBase {
     }else{
       cont=0;
     }
-    if(cont >= 3){
+    if(cont >= 4){
+      cont=0;
       return true;
     }
     else{

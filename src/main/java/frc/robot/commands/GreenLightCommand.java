@@ -10,50 +10,36 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class AutonomousGyroCommand extends CommandBase {
+public class GreenLightCommand extends CommandBase {
   /**
-   * Creates a new GyroCommand.
+   * Creates a new GreenLightCommand.
    */
-  boolean terminate=false;
-  public AutonomousGyroCommand() {
+  public GreenLightCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements();
-
-  }
-  public AutonomousGyroCommand(double deg){
-    RobotContainer.autonomousGyroSubsystem.SetDegree(deg);
-
+    addRequirements(RobotContainer.greenLightSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    terminate = false;
-
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.autonomousGyroSubsystem.Go() == true){
-      terminate = true;
-    }
-    else{
-      terminate = false;
-    }
+    boolean action = RobotContainer.mechanismControl.GetX();
+    RobotContainer.greenLightSubsystem.Activate(action);
     
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.autonomousGyroSubsystem.Reset();
-
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return terminate;
+    return false;
   }
 }

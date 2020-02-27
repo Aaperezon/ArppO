@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.commands.AimUpwardCommand;
 import frc.robot.commands.ArppoAimCommand;
 import frc.robot.commands.ArppoRevCommand;
 import frc.robot.commands.ArppoRevFinalCommand;
@@ -22,16 +23,15 @@ public class ArppoAutoShoot extends SequentialCommandGroup {
    * Creates a new ArppoAutoShoot.
    */
   public ArppoAutoShoot() {
-    // Add your commands in the super() call, e.g.
-    // super(new FooCommand(), new BarCommand());
     super(
-      new ArppoAimCommand(),
-      new ArppoRevCommand(),
+      new ParallelCommandGroup(
+        new ArppoAimCommand(),
+        new ArppoRevCommand()
+      ),
       new ParallelCommandGroup(
         new ArppoRevFinalCommand(),
         new ArppoShootCommand())
 
-        
     );
   }
 }

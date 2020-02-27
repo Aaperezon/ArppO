@@ -38,7 +38,8 @@ public final class Constants {
     public static final int ARPPOSUPERIOR = 3;
     public static final int ARPPOINFERIOR = 4;
     //DATLIFT MOTOR
-    public static final int DATLIFT_MOTOR = 5;
+    public static final int DATLIFT_MOTOR1 = 5;
+    public static final int DATLIFT_MOTOR2 = 6;
     //CHASIS GEARBOX PORTS
     public static final int CHASIS_LEFT = 8;
     public static final int CHASIS_RIGHT = 9;
@@ -59,7 +60,12 @@ public final class Constants {
     //LIMIT SWITCHES FOR ARPPO
     public static final int FRIK_UP = 1;
     public static final int FRIK_LOW = 0;
-
+    public static final int ENC_LEFT1 = 2;
+    public static final int ENC_LEFT2 = 3;
+    public static final int ENC_RIGHT1 = 4;
+    public static final int ENC_RIGHT2 = 5;
+    //** RELAY PORT **/
+    public static final int GREEN_LED = 3;
 
 
     

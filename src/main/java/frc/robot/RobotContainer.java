@@ -30,7 +30,6 @@ public class RobotContainer {
   public static Xbox360Controller mechanismControl = new Xbox360Controller(Constants.NUM_MECHANISM_CONTROLLER);
 
   public static DifferentialDrive chasis = new DifferentialDrive(driveTrain.Leftcontroller(), driveTrain.RightController());
-  //public static DifferentialDrive chasis = new DifferentialDrive(new Spark(8),new Spark(9));
 
   public static AutonomousDriveSubsystem autonomousDriveSubsystem = new AutonomousDriveSubsystem();
   public static AutonomousGyroSubsystem autonomousGyroSubsystem = new AutonomousGyroSubsystem();
@@ -49,6 +48,8 @@ public class RobotContainer {
   public static FrikLimitSubsystem frikLimitSubsystem = new FrikLimitSubsystem();
   public static PanclColorSensorSubsystem panclColorSensorSubsystem = new PanclColorSensorSubsystem();
   public static DatLiftMotorSubsystem datLiftMotorSubsystem = new DatLiftMotorSubsystem();
+  public static GreenLightSubsystem greenLightSubsystem = new GreenLightSubsystem();
+
 
   public static AutonomousDriveCommand autonomousDriveCommand = new AutonomousDriveCommand();
   public static AutonomousGyroCommand autonomousGyroCommand = new AutonomousGyroCommand();
@@ -67,9 +68,10 @@ public class RobotContainer {
   public static PanclColorSensorCommand panclColorSensorCommand = new PanclColorSensorCommand();
   public static PanclDetectColor panclDetectColor = new PanclDetectColor();
   public static DatLiftMotorCommand datLiftMotorCommand = new DatLiftMotorCommand();
-
+  public static GreenLightCommand greenLightCommand = new GreenLightCommand();
   
   public static AutonomousSequence autonomousSequence = new AutonomousSequence();
+  public static Drive drive = new Drive();
 
   public static ArppoAutoShoot arppoAutoShoot = new ArppoAutoShoot();
 
@@ -90,6 +92,9 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
   }
+
+public static void autonomousDriveCommand(int i) {
+}
 
 
 

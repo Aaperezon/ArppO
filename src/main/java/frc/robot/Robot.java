@@ -21,7 +21,6 @@ import frc.robot.RobotContainer;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
 
   @Override
   public void robotInit() {
@@ -57,17 +56,39 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
-    RobotContainer.autonomousSequence.schedule();
+    //RobotContainer.autonomousSequence.schedule();
   }
 
   /**
    * This function is called periodically during autonomous.
    */
+  boolean p0 = true;
+   boolean p1 = false;
+   boolean p2 = false;
   @Override
   public void autonomousPeriodic() {
+    if(p0 == true){
+      RobotContainer.drive.schedule();
+      p0 = false;
+      p1 = true;
+      p2 = false;
+      System.out.println("-1-1");
+
+    }
+    if(p1 == true){
+      RobotContainer.autonomousSequence.schedule();
+      System.out.println("11");
+      p0 = false;
+      p1 = false;
+      p2 = true;
+    }else if(p2 == true){
+      RobotContainer.arppoAutoShoot.schedule();
+      System.out.println("00");
+      p0 = false;
+      p1 = false;
+      p2 = false;
+
+    }
 
   }
 
@@ -77,9 +98,6 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
 
   }
 

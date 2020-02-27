@@ -28,6 +28,8 @@ public class DriveCommand extends CommandBase {
     double Throttle1 = -RobotContainer.driverControl.GetLJY();
     double ThrottleTurn = RobotContainer.driverControl.GetRJX();
     RobotContainer.driveSubsystem.Dron(Throttle1 ,ThrottleTurn);
+    RobotContainer.autonomousDriveSubsystem.GetDistanceLeft();
+    RobotContainer.autonomousDriveSubsystem.GetDistanceRight();
     /*
     double Throttle1 = -RobotContainer.driverControl.GetRT();
     double Throttle2 = -RobotContainer.driverControl.GetLT();
