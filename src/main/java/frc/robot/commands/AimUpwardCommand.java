@@ -31,7 +31,7 @@ public class AimUpwardCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(time.get() <.4){ 
+    if(time.get() <.8){ 
       RobotContainer.frikArppoAimSubsystem.Aim(-1,0);
       terminate = false;
     }

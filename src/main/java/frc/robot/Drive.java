@@ -22,7 +22,7 @@ public class Drive extends SequentialCommandGroup {
     // super(new FooCommand(), new BarCommand());
     super(
 
-    new AutonomousDriveCommand(-30)
+    new AutonomousDriveCommand(-35)
     );
   }
 }

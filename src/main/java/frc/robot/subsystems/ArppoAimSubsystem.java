@@ -23,8 +23,8 @@ public class ArppoAimSubsystem extends SubsystemBase {
   NetworkTableEntry targetY;
   double yaw;
   double pitch;
-  private static final double kTargetPitch = -3;
-  private static final double kTargetYaw = 17;
+  private static final double kTargetPitch = -11;
+  private static final double kTargetYaw = 16;
 
   private static final double kPpitch = .1;  //.027
   private static final double kIpitch = .01; //.01
@@ -38,12 +38,12 @@ public class ArppoAimSubsystem extends SubsystemBase {
   private int yawCount =0;
   private int pitchCount =0;
 
-  private static final double kPyaw = .07;  //.027
+  private static final double kPyaw = .1;  //.027
   private static final double kIyaw = .015; //.01
-  private static final double kDyaw = .013; //.005
+  private static final double kDyaw = .018; //.005
   private final MedianFilter m_filterYaw = new MedianFilter(5);
   private final PIDController m_pidControllerYaw = new PIDController(kPyaw, kIyaw, kDyaw);
-  private double areaTolerance = 6;
+  private double areaTolerance = 5;
 
   public ArppoAimSubsystem() {
     targetX=table.getEntry("targetYaw");   //Z

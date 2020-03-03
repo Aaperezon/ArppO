@@ -26,11 +26,13 @@ public class PanclDetectColor extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    /*
     if(RobotContainer.panclColorSensorSubsystem.SetColor()){
       terminate = true;
     }else{
       terminate = false;
     }
+    */
   }
 
   // Called once the command ends or is interrupted.

@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -24,6 +26,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    CameraServer.getInstance().startAutomaticCapture();
+
 
   }
 
@@ -38,6 +42,31 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    String gameData = DriverStation.getInstance().getGameSpecificMessage();
+    String colorSelection = "Null";
+    if(gameData.length() > 0)
+    {
+      switch (gameData.charAt(0))
+      {
+        case 'B' :
+          colorSelection = "Blue";
+          break;
+        case 'G' :
+          colorSelection = "Green";
+          break;
+        case 'R' :
+          colorSelection = "Red ";
+          break;
+        case 'Y' :
+          colorSelection = "Yellow ";
+          break;
+        default :
+          break;
+      }
+      SmartDashboard.putString("OwnColor", colorSelection);
+    }
+      CommandScheduler.getInstance().run();
+
     // Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled
     // commands, running already-scheduled commands, removing finished or
@@ -45,9 +74,9 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods. This must be called from the
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
-    CommandScheduler.getInstance().run();
 
   }
+  
 
   /**
    * This autonomous runs the autonomous command selected by your
@@ -75,19 +104,19 @@ public class Robot extends TimedRobot {
       System.out.println("-1-1");
 
     }
-    if(p1 == true){
+    else if(p1 == true){
       RobotContainer.autonomousSequence.schedule();
       System.out.println("11");
       p0 = false;
       p1 = false;
       p2 = true;
-    }else if(p2 == true){
+    }
+    else if(p2 == true){
       RobotContainer.arppoAutoShoot.schedule();
-      System.out.println("00");
+      System.out.println("11");
       p0 = false;
       p1 = false;
       p2 = false;
-
     }
 
   }

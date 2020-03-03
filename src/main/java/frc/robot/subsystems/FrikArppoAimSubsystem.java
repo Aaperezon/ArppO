@@ -15,8 +15,8 @@ import frc.robot.RobotContainer;
 
 public class FrikArppoAimSubsystem extends SubsystemBase {
   private Spark pitchmotor = new Spark(Constants.ARPPOPITCHPORT);
-  private double speedPitch = .35;
-  private double speedYaw = .5;
+  private double speedPitch = .38;
+  private double speedYaw = .7;
 
 
   public FrikArppoAimSubsystem() {

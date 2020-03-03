@@ -27,12 +27,14 @@ public class PanclColorCount extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    /*
     if(RobotContainer.panclColorSensorSubsystem.SpinUntilColor()){
       terminate = true;
     }
     else{
       terminate = false;
     }
+    */
 
   }
 
